@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'home'])->name('customer.home');
- 
 
-Route::prefix('admin')->namespace('Admin')->group(function(){
-    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.home');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::prefix('admin')->namespace('Admin')->group(function(){
+//     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.home');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
