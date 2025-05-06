@@ -23,6 +23,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\DateColumn;
 
+use Illuminate\Support\Facades\App;
 
 class SliderResource extends Resource
 {
@@ -55,6 +56,7 @@ class SliderResource extends Resource
 
             DatePicker::make('publish_date')
                 ->label('تاریخ انتشار')
+                ->jalali()
                 ->required(),
 
             Toggle::make('is_active')
@@ -81,8 +83,8 @@ class SliderResource extends Resource
 
                 TextColumn::make('publish_date')
                 ->label('تاریخ انتشار')
-                ->date(), // ✅ نمایش به‌صورت تاریخ
-
+                ->date() // ✅ نمایش به‌صورت تاریخ
+                ->when(App::isLocale('fa'), fn (TextColumn $column) => $column->jalaliDate()),
             IconColumn::make('is_active')
                 ->label('فعال؟')
                 ->boolean(),

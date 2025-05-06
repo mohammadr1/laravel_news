@@ -5,13 +5,13 @@ body {
     margin-top: 110px;
     padding: 0;
   }
-  
+
   header {
     background-color: #333;
     color: white;
     /* padding: 1rem; */
   }
-  
+
   nav ul {
     list-style: none;
     display: flex;
@@ -19,25 +19,25 @@ body {
     gap: 1rem;
     padding: 0;
   }
-  
+
   nav a {
     color: white;
     text-decoration: none;
   }
-  
+
   .news-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     padding: 1rem;
   }
-  
+
   .news-item {
     border: 1px solid #ddd;
     padding: 1rem;
     border-radius: 8px;
   }
-  
+
   .news-item img {
     width: 100%;
     height: auto;
@@ -45,26 +45,44 @@ body {
   }
 
   /* start slider */
-  
-  .carousel-control-prev,
-  .carousel-control-next {
-    top: 50%;
-    transform: translateY(-50%);
-    width: 5%; /* دلخواه: باریک‌تر شدن محدوده کلیک */
+/* استایل اسلایدر */
+.slider-wrapper {
+    height: 300px;
   }
-  
-  .carousel-item{
+
+  .carousel-inner,
+  .carousel-item,
+  .carousel-inner img {
     height: 100%;
-  }
-  .carousel-inner{
-    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: .5rem;
     overflow: hidden;
   }
-  .carousel-inner img {
-    border-radius: .5rem; 
+
+  @media (max-width: 768px) {
+    .slider-wrapper {
+      height: 200px;
+    }
   }
-  /* end slider */
-  
+
+  /* دو خبر کناری */
+  .news-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 1rem;
+  }
+  .news-card {
+    flex: 1 1 0%;
+  }
+  .slider-img {
+    height: 100%;
+    object-fit: cover;
+}
+    /* end slider */
+
 
 /* start style headers  */
       .bd-placeholder-img {

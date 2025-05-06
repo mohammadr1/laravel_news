@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('subtitle')->nullable(); // زیرمتن
             $table->string('image');
             $table->string('link')->nullable();
+            $table->text('description')->nullable();
             $table->date('publish_date')->nullable(); // تاریخ انتشار
             $table->boolean('is_active')->default(true);
             $table->timestamps();
