@@ -26,10 +26,10 @@
                             border-top-right-radius: 10px;">
                             <h5 class="mb-2">{{ $slider->title }}</h5>
                             @if($slider->publish_date)
-                                <p class="mb-1">{{ jdate($slider->publish_date)->format('j F Y') }}</p>
+                            <p class="mb-1">{{ jdate($slider->publish_date)->format('j F Y') }}</p>
                             @endif
                             @if($slider->subtitle)
-                                <p class="mb-0" style="word-wrap: break-word;">{{ $slider->subtitle }}</p>
+                            <p class="mb-0" style="word-wrap: break-word;">{{ $slider->subtitle }}</p>
                             @endif
                         </div>
                     </div>
@@ -51,123 +51,57 @@
     <!-- دو خبر کناری -->
     <div class="col-12 col-md-4">
         <div class="d-flex flex-column" style="height: 350px;">
-            @for ($i = 0; $i < 2; $i++) <div class="news-card d-flex shadow-sm rounded bg-white mb-2"
-                style="height: 50%; overflow: hidden;">
+            @foreach ($leftSliderNews as $news)
+            <div class="news-card d-flex shadow-sm rounded bg-white mb-2" style="height: 50%; overflow: hidden;">
                 <div class="w-50 p-2">
-                    <img src="assets/img/leftslider1.jpg" class="img-fluid rounded w-100 h-100 object-fit-cover"
-                        alt="خبر">
+                    <img src="{{ asset('storage/' . $news->image) }}" class="img-fluid rounded w-100 h-100 object-fit-cover" alt="خبر">
                 </div>
                 <div class="w-50 p-2 d-flex flex-column justify-content-between overflow-auto">
                     <div>
                         <span class="badge bg-danger mb-1">فوری</span>
-                        <h6 class="news-title mb-1 small">عنوان خبر اینجا قرار می‌گیرد</h6>
+                        <h6 class="news-title mb-1 small">{{ $news->title }}</h6>
                         <div class="news-meta small text-muted">
-                            <span><i class="far fa-clock me-1"></i>۱۴۰۳/۰۵/۲۵</span><br>
-                            <span><i class="far fa-user me-1"></i>علی محمدی</span>
+                            <span><i class="far fa-clock me-1"></i>{{ jdate($news->published_at)->format('Y/m/d') }}</span><br>
+                            <span><i class="far fa-user me-1"></i>{{ $news->author->name ?? 'نامشخص' }}</span>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-sm btn-outline-primary mt-1">مشاهده کامل خبر</a>
+                    {{-- <a href="{{ route('news.show', $news->slug) }}" class="btn btn-sm btn-outline-primary mt-1">مشاهده کامل خبر</a> --}}
                 </div>
+            </div>
+            @endforeach
         </div>
-        @endfor
     </div>
-</div>
+
 </div>
 
 
 <div class="row">
     <div class="col-md-8 shadow rounded" style="max-width: 800px; height: auto;">
-        <!-- عنوان اخبار -->
         <h3 class="text-right mb-4 p-2"><i class="fas fa-newspaper me-2"></i>آخرین اخبار</h3>
 
-        <!-- خبر اول -->
+        @foreach ($bottomSliderNews as $news)
         <div class="news-card row align-items-center shadow-sm rounded-3 p-3 mb-4 bg-white">
             <div class="col-md-4">
-                <img src="assets/img/leftslider1.jpg" class="img-fluid rounded-3 shadow-sm" alt="تصویر خبر">
+                <img src="{{ asset('storage/' . $news->image) }}"
+                     class="img-fluid rounded-3 shadow-sm" alt="تصویر خبر">
             </div>
             <div class="col-md-8">
                 <div class="news-content">
                     <span class="badge bg-danger mb-2">فوری</span>
-                    <h5 class="news-title text-dark">عنوان خبر اینجا قرار می‌گیرد</h5>
-
+                    <h5 class="news-title text-dark">{{ $news->title }}</h5>
                     <div class="news-meta mt-3">
                         <span class="news-date text-muted">
-                            <i class="far fa-clock me-1"></i> ۱۴۰۳/۰۵/۲۵
+                            <i class="far fa-clock me-1"></i> {{ jdate($news->published_at)->format('Y/m/d') }}
                         </span>
                         <span class="news-author text-muted ms-3">
-                            <i class="far fa-user me-1"></i> نویسنده: علی محمدی
+                            <i class="far fa-user me-1"></i> نویسنده: {{ $news->author->name ?? 'نامشخص' }}
                         </span>
                     </div>
-                    <a href="#" class="btn btn-sm btn-primary mt-3">مشاهده کامل خبر</a>
+                    {{-- <a href="{{ route('news.show', $news->slug) }}" class="btn btn-sm btn-primary mt-3">مشاهده کامل خبر</a> --}}
                 </div>
             </div>
         </div>
-
-        <!-- خبر دوم -->
-        <div class="news-card row align-items-center shadow-sm rounded-3 p-3 mb-4 bg-white">
-            <div class="col-md-4">
-                <img src="assets/img/leftslider1.jpg" class="img-fluid rounded-3 shadow-sm" alt="تصویر خبر">
-            </div>
-            <div class="col-md-8">
-                <div class="news-content">
-                    <span class="badge bg-danger mb-2">فوری</span>
-                    <h5 class="news-title text-dark">عنوان خبر اینجا قرار می‌گیرد</h5>
-                    <div class="news-meta mt-3">
-                        <span class="news-date text-muted">
-                            <i class="far fa-clock me-1"></i> ۱۴۰۳/۰۵/۲۵
-                        </span>
-                        <span class="news-author text-muted ms-3">
-                            <i class="far fa-user me-1"></i> نویسنده: علی محمدی
-                        </span>
-                    </div>
-                    <a href="#" class="btn btn-sm btn-primary mt-3">مشاهده کامل خبر</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- خبر سوم -->
-        <div class="news-card row align-items-center shadow-sm rounded-3 p-3 mb-4 bg-white">
-            <div class="col-md-4">
-                <img src="assets/img/leftslider1.jpg" class="img-fluid rounded-3 shadow-sm" alt="تصویر خبر">
-            </div>
-            <div class="col-md-8">
-                <div class="news-content">
-                    <span class="badge bg-danger mb-2">فوری</span>
-                    <h5 class="news-title text-dark">عنوان خبر اینجا قرار می‌گیرد</h5>
-                    <div class="news-meta mt-3">
-                        <span class="news-date text-muted">
-                            <i class="far fa-clock me-1"></i> ۱۴۰۳/۰۵/۲۵
-                        </span>
-                        <span class="news-author text-muted ms-3">
-                            <i class="far fa-user me-1"></i> نویسنده: علی محمدی
-                        </span>
-                    </div>
-                    <a href="#" class="btn btn-sm btn-primary mt-3">مشاهده کامل خبر</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- خبر چهارم -->
-        <div class="news-card row align-items-center shadow-sm rounded-3 p-3 mb-4 bg-white">
-            <div class="col-md-4">
-                <img src="assets/img/leftslider.jpg" class="img-fluid rounded-3 shadow-sm" alt="تصویر خبر">
-            </div>
-            <div class="col-md-8">
-                <div class="news-content">
-                    <span class="badge bg-danger mb-2">فوری</span>
-                    <h5 class="news-title text-dark">عنوان خبر اینجا قرار می‌گیرد</h5>
-                    <div class="news-meta mt-3">
-                        <span class="news-date text-muted">
-                            <i class="far fa-clock me-1"></i> ۱۴۰۳/۰۵/۲۵
-                        </span>
-                        <span class="news-author text-muted ms-3">
-                            <i class="far fa-user me-1"></i> نویسنده: علی محمدی
-                        </span>
-                    </div>
-                    <a href="#" class="btn btn-sm btn-primary mt-3">مشاهده کامل خبر</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <!-- بخش کناری -->
