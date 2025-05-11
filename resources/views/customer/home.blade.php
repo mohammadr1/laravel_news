@@ -14,7 +14,8 @@
                 <div class="carousel-inner h-100">
                     @foreach($sliders as $index => $slider)
                     <div class="carousel-item h-100 @if($index === 0) active @endif">
-                        <img src="{{ asset('storage/' . $slider->image) }}" class="d-block w-100 h-100" alt="{{ $slider->title }}" style="object-fit: cover;">
+                        <img src="{{ asset('storage/' . $slider->image) }}" class="d-block w-100 h-100"
+                            alt="{{ $slider->title }}" style="object-fit: cover;">
                         <div class="position-absolute bottom-0 w-100 p-3" style="
                             background-color: rgba(0,0,0,0.6);
                             color: white;
@@ -54,18 +55,21 @@
             @foreach ($leftSliderNews as $news)
             <div class="news-card d-flex shadow-sm rounded bg-white mb-2" style="height: 50%; overflow: hidden;">
                 <div class="w-50 p-2">
-                    <img src="{{ asset('storage/' . $news->image) }}" class="img-fluid rounded w-100 h-100 object-fit-cover" alt="خبر">
+                    <img src="{{ asset('storage/' . $news->image) }}"
+                        class="img-fluid rounded w-100 h-100 object-fit-cover" alt="خبر">
                 </div>
                 <div class="w-50 p-2 d-flex flex-column justify-content-between overflow-auto">
                     <div>
                         <span class="badge bg-danger mb-1">فوری</span>
                         <h6 class="news-title mb-1 small">{{ $news->title }}</h6>
                         <div class="news-meta small text-muted">
-                            <span><i class="far fa-clock me-1"></i>{{ jdate($news->published_at)->format('Y/m/d') }}</span><br>
+                            <span><i
+                                    class="far fa-clock me-1"></i>{{ jdate($news->published_at)->format('Y/m/d') }}</span><br>
                             <span><i class="far fa-user me-1"></i>{{ $news->author->name ?? 'نامشخص' }}</span>
                         </div>
                     </div>
-                    {{-- <a href="{{ route('news.show', $news->slug) }}" class="btn btn-sm btn-outline-primary mt-1">مشاهده کامل خبر</a> --}}
+                    {{-- <a href="{{ route('news.show', $news->slug) }}" class="btn btn-sm btn-outline-primary
+                    mt-1">مشاهده کامل خبر</a> --}}
                 </div>
             </div>
             @endforeach
@@ -82,8 +86,7 @@
         @foreach ($bottomSliderNews as $news)
         <div class="news-card row align-items-center shadow-sm rounded-3 p-3 mb-4 bg-white">
             <div class="col-md-4">
-                <img src="{{ asset('storage/' . $news->image) }}"
-                     class="img-fluid rounded-3 shadow-sm" alt="تصویر خبر">
+                <img src="{{ asset('storage/' . $news->image) }}" class="img-fluid rounded-3 shadow-sm" alt="تصویر خبر">
             </div>
             <div class="col-md-8">
                 <div class="news-content">
@@ -97,7 +100,8 @@
                             <i class="far fa-user me-1"></i> نویسنده: {{ $news->author->name ?? 'نامشخص' }}
                         </span>
                     </div>
-                    {{-- <a href="{{ route('news.show', $news->slug) }}" class="btn btn-sm btn-primary mt-3">مشاهده کامل خبر</a> --}}
+                    {{-- <a href="{{ route('news.show', $news->slug) }}" class="btn btn-sm btn-primary mt-3">مشاهده کامل
+                    خبر</a> --}}
                 </div>
             </div>
         </div>
